@@ -7,13 +7,13 @@ import albumentations as a
 
 AREA_THRESHOLD = 200
 TRANSFORM = a.Compose([
-    # a.HorizontalFlip(always_apply=True),
-    a.ColorJitter(brightness=(0.8, 1.2), contrast=(0.8, 1.2), saturation=(0.9, 1.1), hue=(-0.1, 0.1), p=0.1),
+    a.HorizontalFlip(p=0.2),
+    a.ColorJitter(brightness=(0.8, 1.2), contrast=(0.8, 1.2), saturation=(0.9, 1.1), hue=(-0.1, 0.1), p=0.2),
     # a.Emboss(alpha=(0.1, 0.3), strength=(0.1, 0.5), p=0.1),
-    a.Equalize(p=0.1),
-    a.HueSaturationValue(hue_shift_limit=(-5, 5), sat_shift_limit=(-5, 5), val_shift_limit=(-1, 1), p=0.1),
+    a.Equalize(p=0.2),
+    a.HueSaturationValue(hue_shift_limit=(-5, 5), sat_shift_limit=(-5, 5), val_shift_limit=(-1, 1), p=0.2),
     # a.RGBShift(r_shift_limit=(-5, 5), g_shift_limit=(-5, 5), b_shift_limit=(-5, 5), p=0.1),
-    a.Sharpen(alpha=(0.1, 0.3), p=0.1),
+    a.Sharpen(alpha=(0.1, 0.3), p=0.2),
     # a.GaussianBlur(blur_limit=(1, 5), sigma_limit=(0.1, 0.3), p=0.1),
     # a.Rotate(limit=(-45, 45), interpolation=cv.INTER_CUBIC, value=0, p=0.1),
     # a.SafeRotate(limit=(-45, 45), interpolation=cv.INTER_CUBIC, border_mode=cv.BORDER_REFLECT_101),
@@ -21,7 +21,7 @@ TRANSFORM = a.Compose([
     # a.NoOp(p=0.1),
     ], bbox_params=a.BboxParams(format='yolo', min_area=AREA_THRESHOLD))
 
-df = pd.read_csv('df.csv')
+df = pd.read_csv('train_df.csv')
 df = pd.DataFrame(df)
 print(df.head())
 print(df.shape[0])

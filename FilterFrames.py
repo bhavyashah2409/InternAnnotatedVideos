@@ -40,7 +40,6 @@ df.reset_index(drop=True, inplace=True)
 df = df.drop(columns=['keep'])
 
 print('FRAMES TAKEN FROM EACH SECOND OF VIDEO:', FRAMES_IN_EACH_SEC)
-
 print('TOTAL IMAGES AFTER FILTERING:', df.shape[0])
 
-df.to_csv('df.csv', index=False)
+df.to_csv('train_df.csv', index=False)

@@ -32,12 +32,12 @@ with open(r'custom_data.yaml', 'w') as f:
     f.close()
 
 # READ DATAFRAME
-df = pd.read_csv('df.csv')
+df = pd.read_csv('train_df.csv')
 df = pd.DataFrame(df)
 print('TOTAL IMAGES:', df.shape[0])
 
 # SPLIT DATAFRAME
-TEST_SIZE = 0.1
+TEST_SIZE = 0.2
 train_df, val_df = train_test_split(df, test_size=TEST_SIZE, random_state=24)
 train_df.reset_index(drop=True, inplace=True)
 val_df.reset_index(drop=True, inplace=True)

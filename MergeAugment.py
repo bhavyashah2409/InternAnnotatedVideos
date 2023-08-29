@@ -4,7 +4,7 @@ import pandas as pd
 IMAGE_DIR = 'Images'
 LABEL_DIR = 'Labels'
 
-df = pd.read_csv('df.csv')
+df = pd.read_csv('train_df.csv')
 df = pd.DataFrame(df)
 
 if os.path.exists('aug_df.csv'):
@@ -20,4 +20,4 @@ if os.path.exists('aug_df.csv'):
     aug_df.apply(lambda a: move_augment_images_and_labels(a, IMAGE_DIR, LABEL_DIR), axis=1, result_type=None)
     df = pd.concat([df, aug_df], axis=0, ignore_index=True)
 
-df.to_csv('df.csv', index=False)
+df.to_csv('train_df.csv', index=False)
