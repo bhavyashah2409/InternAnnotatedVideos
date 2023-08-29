@@ -2,6 +2,8 @@ import os
 import pandas as pd
 from sklearn.model_selection import train_test_split
 
+print('CREATION OF YOLO V8 DATA STARTED')
+
 # MAKE TRAINING AND VALIDATION FOLDERS
 if not os.path.exists(r'data'):
     os.mkdir('data')
@@ -35,7 +37,8 @@ df = pd.DataFrame(df)
 print('TOTAL IMAGES:', df.shape[0])
 
 # SPLIT DATAFRAME
-train_df, val_df = train_test_split(df, test_size=0.1, random_state=24)
+TEST_SIZE = 0.1
+train_df, val_df = train_test_split(df, test_size=TEST_SIZE, random_state=24)
 train_df.reset_index(drop=True, inplace=True)
 val_df.reset_index(drop=True, inplace=True)
 
@@ -87,3 +90,5 @@ val_df.to_csv('val_df.csv', index=False)
 os.remove('df.csv')
 os.rmdir('Images')
 os.rmdir('Labels')
+
+print('CREATION OF YOLO V8 DATA DONE')
